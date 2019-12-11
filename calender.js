@@ -3,11 +3,11 @@ var today = new Date();
 
 
 var year = today.getFullYear();
-var month = today.getMonth();//0~11
+var month = today.getMonth();
 var date = today.getDate();
 var day = today.getDay();//星期幾 0~6
 
-var thisMonth = new Date(year, 9, 1);
+var thisMonth = new Date(year, month);
 
 function getDate() {
   document.getElementById("year").innerHTML = year;
@@ -23,21 +23,37 @@ function writeCalender() {
   var str = '';
   var monthIndex = 0;
   var num = 1;
-  var lastDate
-  for (var i = 1; i < 6; i++) {
-    str = str + "<tr>"
+  var lastDate = 0;
+  var longMonth = [0, 2, 4, 6, 7, 9, 11]
+
+  if (longMonth.indexOf(thisMonth.getMonth()) != -1) {
+    lastDate = 31;
+  } else {
+    if (thisMonth.getMonth() == 1) {
+      if (thisMonth.getFullYear() % 4 == 0) {
+        lastDate = 29;
+      }else{
+        lastDate = 28;
+      }
+    } else {
+      lastDate = 30;
+    }
+  }
+
+  for (var i = 1; i < 7; i++) {
+    str = str + "<tr>";
     for (var j = 1; j < 8; j++) {
-      if (num <= 31) {
+      if (num <= lastDate) {
         if (thisMonth.getDay() <= monthIndex) {
-          str = str + "<td>" + num + "</td>"
-          num = num + 1
+          str = str + "<td>" + num + "</td>";
+          num = num + 1;
         } else {
-          str = str + "<td></td>"
+          str = str + "<td></td>";
         }
       } else {
-        str = str + "<td></td>"
+        str = str + "<td></td>";
       }
-      monthIndex = monthIndex + 1
+      monthIndex = monthIndex + 1;
     }
   }
   document.getElementById("calender-body").innerHTML = str + "</tr>";
