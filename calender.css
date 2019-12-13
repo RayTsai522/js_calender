@@ -36,4 +36,8 @@
 #calender-body td:focus{
     background-color: #F5D4CB;
 }
-#week{background-color: #70798E}
+#calender-body td{cursor: default;}
+#week{
+    background-color: #70798E;
+    font-weight: 500;
+}

@@ -54,7 +54,12 @@ function writeCalender() {
   }
 
   document.getElementById("calender-body").innerHTML = str + "</tr>";
-  document.getElementById(`date${today.getDate()}`).style.backgroundColor = "#FF8587"
+
+  if(month == today.getMonth() & date == today.getDate()){
+    document.getElementById(`date${today.getDate()}`).style.backgroundColor = "#FF8587"
+  }else{
+    document.getElementById(`date${date}`).style.backgroundColor = ""
+  }
 }
 
 function addLoadEvent(getDate) {
@@ -82,8 +87,9 @@ function pressNextButton() {
     month = month + 1;
   }
   thisMonth = new Date(year, month);
-  writeCalender();
+  
   date = today.getDate();
+  writeCalender();
   getDate();
 }
 function pressPreviousButton() {
@@ -94,8 +100,9 @@ function pressPreviousButton() {
     month = month - 1;;
   }
   thisMonth = new Date(year, month);
-  writeCalender();
+  
   date = today.getDate();
+  writeCalender();
   getDate();
 }
 
