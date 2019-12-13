@@ -83,6 +83,7 @@ function pressNextButton() {
   }
   thisMonth = new Date(year, month);
   writeCalender();
+  date = today.getDate();
   getDate();
 }
 function pressPreviousButton() {
@@ -94,6 +95,7 @@ function pressPreviousButton() {
   }
   thisMonth = new Date(year, month);
   writeCalender();
+  date = today.getDate();
   getDate();
 }
 
