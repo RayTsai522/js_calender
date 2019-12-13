@@ -3,7 +3,6 @@
     background-color: plum;
 }
 #main{
-    background-color: #bdbdbf;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,3 +33,7 @@
     height: 5vh;
 }
 #next, #previous{cursor: pointer;}
+#calender-body td:focus{
+    background-color: #F5D4CB;
+}
+#week{background-color: #70798E}

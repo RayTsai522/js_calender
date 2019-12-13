@@ -41,7 +41,7 @@ function writeCalender() {
     for (var j = 1; j < 8; j++) {
       if (num <= lastDate) {
         if (thisMonth.getDay() <= monthIndex) {
-          str = `${str}<td id=date${num}>${num}</td>`
+          str = `${str}<td id="date${num}" tabindex="${num}" onclick="selectDate(${num})">${num}</td>`
           num = num + 1;
         } else {
           str = str + "<td></td>";
@@ -52,8 +52,9 @@ function writeCalender() {
       monthIndex = monthIndex + 1;
     }
   }
-  
+
   document.getElementById("calender-body").innerHTML = str + "</tr>";
+  document.getElementById(`date${today.getDate()}`).style.backgroundColor = "#FF8587"
 }
 
 function addLoadEvent(getDate) {
@@ -75,8 +76,8 @@ addLoadEvent(writeCalender);
 
 function pressNextButton() {
   if (month == 11) {
-    month = 0
-    year = year + 1
+    month = 0;
+    year = year + 1;
   } else {
     month = month + 1;
   }
@@ -85,17 +86,21 @@ function pressNextButton() {
   getDate();
 }
 function pressPreviousButton() {
-  if(month == 0){
-    month = 11
-    year = year -1
-  }else{
-    month = month - 1;
+  if (month == 0) {
+    month = 11;
+    year = year - 1;
+  } else {
+    month = month - 1;;
   }
   thisMonth = new Date(year, month);
   writeCalender();
-  getDate()
+  getDate();
 }
 
+function selectDate(selected){
+  date = selected;
+  getDate();
+}
 // window.onload = writeCalender;
 
 
