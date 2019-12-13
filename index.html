@@ -13,14 +13,15 @@
 <body>
     <button onclick="myFunction()">Click me</button>
     <p id="demo"></p>
+
     <div id="main">
         <div id="title">
             <p id="year"></p>-<p id="month"></p>-<p id="date"></p>
         </div>
         <div id="calender">
-            <div id="previous">《</div>
+            <div id="previous" onclick="pressPreviousButton()">《</div>
             <table >
-                <thead id="qqq">
+                <thead id="week">
                     <tr>
                         <td>Sun</td>
                         <td>Mon</td>
@@ -35,9 +36,10 @@
                     
                 </tbody>
             </table>
-            <div id="next">》</div>
+            <div id="next" onclick="pressNextButton()">》</div>
         </div>
     </div>
 </body>
+
 
 </html>

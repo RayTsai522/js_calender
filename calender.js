@@ -15,10 +15,6 @@ function getDate() {
   document.getElementById("date").innerHTML = date;
 }
 
-function myFunction() {
-  document.getElementById("demo").innerHTML = "Hello World<button>04ji3</button>";
-  alert("ready go");
-}
 function writeCalender() {
   var str = '';
   var monthIndex = 0;
@@ -32,7 +28,7 @@ function writeCalender() {
     if (thisMonth.getMonth() == 1) {
       if (thisMonth.getFullYear() % 4 == 0) {
         lastDate = 29;
-      }else{
+      } else {
         lastDate = 28;
       }
     } else {
@@ -45,7 +41,7 @@ function writeCalender() {
     for (var j = 1; j < 8; j++) {
       if (num <= lastDate) {
         if (thisMonth.getDay() <= monthIndex) {
-          str = str + "<td>" + num + "</td>";
+          str = `${str}<td id=date${num}>${num}</td>`
           num = num + 1;
         } else {
           str = str + "<td></td>";
@@ -56,6 +52,7 @@ function writeCalender() {
       monthIndex = monthIndex + 1;
     }
   }
+  
   document.getElementById("calender-body").innerHTML = str + "</tr>";
 }
 
@@ -74,6 +71,30 @@ function addLoadEvent(getDate) {
 }
 addLoadEvent(getDate);
 addLoadEvent(writeCalender);
+
+
+function pressNextButton() {
+  if (month == 11) {
+    month = 0
+    year = year + 1
+  } else {
+    month = month + 1;
+  }
+  thisMonth = new Date(year, month);
+  writeCalender();
+  getDate();
+}
+function pressPreviousButton() {
+  if(month == 0){
+    month = 11
+    year = year -1
+  }else{
+    month = month - 1;
+  }
+  thisMonth = new Date(year, month);
+  writeCalender();
+  getDate()
+}
 
 // window.onload = writeCalender;
 
